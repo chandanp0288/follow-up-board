@@ -726,6 +726,9 @@ button {
 .state--empty {
   border-top-color: var(--accent);
 }
+.state--loading {
+  border-top-color: #2f6f8f;
+}
 
 .state-badge {
   display: inline-flex;
@@ -751,6 +754,10 @@ button {
 .state--empty .state-badge {
   background: var(--accent-soft);
   color: var(--accent-ink);
+}
+.state--loading .state-badge {
+  background: #e8f0f4;
+  color: #2f6f8f;
 }
 
 .state h1 {

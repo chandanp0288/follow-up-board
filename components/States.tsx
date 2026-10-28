@@ -62,6 +62,21 @@ export function LoadError({
   );
 }
 
+export function LoadingState() {
+  return (
+    <main className="shell">
+      <div className="state state--loading">
+        <span className="state-badge">Connecting</span>
+        <h1>Loading the board</h1>
+        <p>
+          Fetching the latest candidates and the money sitting in each stage.
+        </p>
+        <div className="hint">This usually takes a moment.</div>
+      </div>
+    </main>
+  );
+}
+
 export function EmptyState() {
   return (
     <main className="shell">

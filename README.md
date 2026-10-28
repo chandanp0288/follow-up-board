@@ -1,11 +1,11 @@
-# Candidate follow-up board
+﻿# Candidate follow-up board
 
 A small recruitment desk board. Every candidate sits in exactly one column — **New, Screened, Submitted, Interview, Placed** — with the days since last contact and the placement value on the card. The top of the page totals the money in each column. Clicking a card logs one of four outcomes and the card moves, with the totals changing immediately. Cards untouched for three days turn red.
 
 Built with Next.js 15 and Supabase. One screen, no login, no background jobs.
 
-**Live demo:** https://info-wires-changing-reg.trycloudflare.com
-This is a temporary Cloudflare tunnel to the local dev server; it stops when that server stops.
+**Live demo:** https://chandanp0288.github.io/follow-up-board/
+The site is built as a static export and deployed to GitHub Pages by `.github/workflows/deploy-pages.yml` on every push to `main`. It has no dependency on a local computer.
 
 ## What is on the screen
 
@@ -41,7 +41,16 @@ That creates `candidate_cards`, enables RLS, adds the four policies and table gr
 
 ## Deploying
 
-The app is a standard Next.js app. Import this repository into Vercel, set the two `NEXT_PUBLIC_` environment variables from `.env.local`, and deploy. No code changes are required.
+The `gh-pages` branch holds the built static export, and GitHub Pages serves it. The live URL is https://chandanp0288.github.io/follow-up-board/ and it works independently of any local machine.
+
+To update it: run `npm run build`, copy the contents of `out/` to the `gh-pages` branch, and push. The two Supabase settings are compiled into the static bundle at build time — they are the browser-safe URL and publishable key, not a secret.
+
+### The rule for future projects
+
+A `trycloudflare.com` quick tunnel is tied to the computer running the dev server. It is useful for a 10-minute preview, but it is not a deployment. Never give a client a quick-tunnel URL. Put the app on a cloud host:
+- static or client-rendered Next.js: GitHub Pages or Vercel;
+- server-rendered Next.js: Vercel;
+- anything with a database: put the database on a managed service (Supabase) and the frontend on a host that stays up.
 
 ## Security note
 
